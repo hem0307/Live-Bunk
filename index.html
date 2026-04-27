@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bunk Tracker</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <!-- Landing page (signed-out view). Auth.js shows/hides these. -->
+    <div id="landing" class="landing">
+      <div class="topbar">
+        <div class="topbar-inner">
+          <div class="brand"><span class="logo">B</span> Bunk Tracker</div>
+          <div>
+            <button class="btn btn-ghost" onclick="goAuth('login')">Sign in</button>
+            <button class="btn btn-primary" onclick="goAuth('signup')">Get started</button>
+          </div>
+        </div>
+      </div>
+      <main>
+        <span class="badge">Built for friend groups</span>
+        <h1>See who's in class.<span class="accent">See who bunked.</span></h1>
+        <p class="lead">
+          Create a private group with your friends, add your lectures, and instantly know
+          who showed up and who's hanging out somewhere else — and where.
+        </p>
+        <div class="cta">
+          <button class="btn btn-primary" onclick="goAuth('signup')">Create an account</button>
+          <button class="btn" onclick="goAuth('login')">I already have an account</button>
+        </div>
+        <div class="features">
+          <div class="card feature">
+            <span class="dot">+</span>
+            <h3>Create a group</h3>
+            <p class="muted">Pick a name and password and share both with your friends. You become the admin.</p>
+          </div>
+          <div class="card feature red">
+            <span class="dot">!</span>
+            <h3>One tap to bunk</h3>
+            <p class="muted">Tap the red button, drop where you are, and your friends know not to wait.</p>
+          </div>
+          <div class="card feature">
+            <span class="dot">~</span>
+            <h3>Auto in-class</h3>
+            <p class="muted">Five minutes after a lecture starts, anyone who didn't bunk shows up as in-class.</p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Auth (login/signup) view -->
+    <div id="auth" class="auth-wrap hidden">
+      <div class="auth-card">
+        <div class="brand" style="justify-content:center;margin-bottom:14px;">
+          <span class="logo">B</span> Bunk Tracker
+        </div>
+        <div class="tab-toggle">
+          <button id="tab-login" class="active" onclick="switchTab('login')">Sign in</button>
+          <button id="tab-signup" onclick="switchTab('signup')">Sign up</button>
+        </div>
+
+        <!-- Login form -->
+        <form id="form-login">
+          <h1>Welcome back</h1>
+          <p class="sub">Sign in to see who's in class and who bunked.</p>
+          <div class="field">
+            <label for="login-username">Username</label>
+            <input id="login-username" name="username" autocomplete="username" required />
+          </div>
+          <div class="field">
+            <label for="login-password">Password</label>
+            <input id="login-password" type="password" name="password" autocomplete="current-password" required />
+          </div>
+          <button class="btn btn-primary" style="width:100%" type="submit">Sign in</button>
+          <p class="alt">No account? <a href="#" onclick="switchTab('signup');return false;">Sign up</a></p>
+        </form>
+
+        <!-- Signup form -->
+        <form id="form-signup" class="hidden">
+          <h1>Create your account</h1>
+          <p class="sub">Pick a username and password to start tracking with your friends.</p>
+          <div class="field">
+            <label for="signup-username">Username</label>
+            <input id="signup-username" name="username" autocomplete="username" required minlength="3" maxlength="32" />
+          </div>
+          <div class="field">
+            <label for="signup-displayname">Display name</label>
+            <input id="signup-displayname" name="displayName" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="signup-password">Password (min 6 chars)</label>
+            <input id="signup-password" type="password" name="password" autocomplete="new-password" required minlength="6" />
+          </div>
+          <button class="btn btn-primary" style="width:100%" type="submit">Create account</button>
+          <p class="alt">Already have one? <a href="#" onclick="switchTab('login');return false;">Sign in</a></p>
+        </form>
+      </div>
+    </div>
+
+    <script src="/js/auth.js"></script>
+  </body>
+</html>
